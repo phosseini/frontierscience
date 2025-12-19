@@ -33,7 +33,7 @@ def test_data_files():
     print("\nTesting data files...")
     
     required_files = [
-        "data/frontierscience_full.csv",
+        "data/frontierscience.csv",
         "prompts/olympiad_judge_prompt.txt",
         "prompts/research_judge_prompt.txt"
     ]
@@ -56,7 +56,7 @@ def test_dataset_loading():
     try:
         from src.data_loader import FrontierScienceDataset
         
-        dataset = FrontierScienceDataset("data/frontierscience_full.csv")
+        dataset = FrontierScienceDataset("data/frontierscience.csv")
         stats = dataset.get_statistics()
         
         print(f"✓ Dataset loaded successfully")

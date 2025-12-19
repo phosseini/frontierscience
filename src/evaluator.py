@@ -400,7 +400,7 @@ if __name__ == "__main__":
     # Example usage
     from src.data_loader import FrontierScienceDataset
     
-    dataset = FrontierScienceDataset("data/frontierscience_full.csv")
+    dataset = FrontierScienceDataset("data/frontierscience.csv")
     
     evaluator = FrontierScienceEvaluator(
         dataset=dataset,

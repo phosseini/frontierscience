@@ -49,7 +49,7 @@ def main():
     parser.add_argument(
         '--data_path',
         type=str,
-        default='data/frontierscience_full.csv',
+        default='data/frontierscience.csv',
         help='Path to dataset CSV file'
     )
     
@@ -110,7 +110,7 @@ def main():
     # Validate data path
     if not Path(args.data_path).exists():
         print(f"Error: Data file not found at {args.data_path}")
-        print("Please ensure frontierscience_full.csv is in the data/ directory")
+        print("Please ensure frontierscience.csv is in the data/ directory")
         return 1
     
     # Set default num_trials based on track
