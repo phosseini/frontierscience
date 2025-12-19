@@ -66,74 +66,6 @@ Average rubric score: X.XX/10
 Results saved to: results/
 ```
 
-## Running Full Evaluations
-
-### Research Track (as in paper)
-
-```bash
-python run_evaluation.py \
-    --track research \
-    --model gpt-4o \
-    --judge_model gpt-4o \
-    --num_trials 30 \
-    --output_dir results/research
-```
-
-**Time**: 2-3 hours for 60 problems × 30 trials
-
-### Olympiad Track (as in paper)
-
-```bash
-python run_evaluation.py \
-    --track olympiad \
-    --model gpt-4o \
-    --num_trials 20 \
-    --output_dir results/olympiad
-```
-
-**Time**: 1-2 hours for 100 problems × 20 trials
-
-### Full Paper Reproduction
-
-Run complete evaluation as described in the paper:
-
-```bash
-bash scripts/reproduce_paper.sh gpt-4o
-```
-
-This runs both Olympiad (100 problems × 20 trials) and Research (60 problems × 30 trials) tracks.
-
-**Total time**: 3-5 hours
-
-## Using Different Models
-
-### OpenAI O1 (with reasoning effort)
-```bash
-python run_evaluation.py \
-    --track research \
-    --model o1 \
-    --reasoning_effort high \
-    --judge_model gpt-4o \
-    --num_trials 30
-```
-
-### Claude 3.5 Sonnet
-```bash
-python run_evaluation.py \
-    --track research \
-    --model claude-3-5-sonnet-20241022 \
-    --judge_model gpt-4o \
-    --num_trials 30
-```
-
-### Gemini (requires GOOGLE_API_KEY in .env)
-```bash
-python run_evaluation.py \
-    --track olympiad \
-    --model gemini/gemini-2.0-flash-exp \
-    --num_trials 20
-```
-
 ## Analyzing Results
 
 ### Generate Summary and Plots
@@ -142,14 +74,6 @@ python analyze_results.py \
     --results_dir results/ \
     --plot \
     --output comparison.png
-```
-
-### Compare Multiple Models
-```bash
-python analyze_results.py \
-    --results_dir results/ \
-    --models "gpt-4o,claude-3-5-sonnet,o1" \
-    --plot
 ```
 
 ### View Results
@@ -189,34 +113,6 @@ python run_evaluation.py \
     --output_dir results/my-experiment
 ```
 
-## Expected Results (from paper)
-
-### GPT-4o
-- Olympiad: ~61.7% accuracy
-- Research: ~14.1% accuracy, ~4.2/10 avg score
-
-### O1
-- Olympiad: ~69.7% accuracy
-- Research: ~20.2% accuracy, ~5.5/10 avg score
-
-### GPT-5 (paper's best model)
-- Olympiad: ~77% accuracy
-- Research: ~25% accuracy, ~6.5/10 avg score
-
-## Troubleshooting
-
-### Rate Limit Errors
-**Solution**: Wait between runs, reduce `--num_trials`, or use higher tier API access
-
-### Module Not Found
-**Solution**: Run `pip install -r requirements.txt` from project root
-
-### API Key Not Found
-**Solution**: Ensure `.env` file exists with `OPENAI_API_KEY=your-key`
-
-### Import Errors
-**Solution**: Always run commands from project root (where `src/` folder is located)
-
 ## Project Structure
 
 ```
@@ -230,38 +126,7 @@ frontierscience-benchmark/
 │   ├── data_loader.py                # Dataset loading
 │   ├── model_caller.py               # LiteLLM integration
 │   └── evaluator.py                  # Evaluation logic
-├── scripts/
-│   └── reproduce_paper.sh            # Full paper reproduction
 ├── run_evaluation.py                 # Main CLI script
 ├── analyze_results.py                # Result analysis
-├── example_usage.py                  # Code examples
 └── test_installation.py              # Verify setup
 ```
-
-## Programmatic Usage
-
-```python
-from src import FrontierScienceDataset, FrontierScienceEvaluator
-
-# Load dataset
-dataset = FrontierScienceDataset("data/frontierscience_full.csv")
-
-# Create evaluator
-evaluator = FrontierScienceEvaluator(
-    dataset=dataset,
-    model='gpt-4o',
-    judge_model='gpt-4o',
-    output_dir='results'
-)
-
-# Run evaluation
-results = evaluator.evaluate_research(limit=10, num_trials=5)
-print(f"Accuracy: {results['accuracy']:.2%}")
-print(f"Avg Score: {results['avg_rubric_score']:.2f}/10")
-```
-
-## Additional Resources
-
-- **Paper**: [FrontierScience: Evaluating AI's Ability to Perform Expert-Level Scientific Tasks](https://arxiv.org/abs/2501.xxxxx)
-- **Dataset**: [huggingface.co/datasets/openai/frontierscience](https://huggingface.co/datasets/openai/frontierscience)
-- **LiteLLM Docs**: [docs.litellm.ai](https://docs.litellm.ai)
