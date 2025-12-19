@@ -16,4 +16,4 @@ The attempted answer: {answer}
 
 ***
 
-First, think step-by-step about each rubric item. Explain your reasoning for each rubric item. Then, tally the points up and write VERDICT: {total_points} in the last line of your response, no other text. For example, VERDICT: 2.5 or VERDICT: 8.
+First, think step-by-step about each rubric item. Explain your reasoning for each rubric item. Then, tally the points up and write VERDICT: {{total_points}} in the last line of your response, no other text. For example, VERDICT: 2.5 or VERDICT: 8.
