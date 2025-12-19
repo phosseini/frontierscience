@@ -1,10 +1,10 @@
-# FrontierScience Benchmark - Setup & Usage Guide
-
-## Overview
+# FrontierScience Benchmark
 
 FrontierScience is a benchmark for evaluating AI on expert-level scientific reasoning, introduced by OpenAI in their blog post [*Evaluating AI's ability to perform scientific research tasks*](https://openai.com/index/frontierscience/).
 
 This repository provides an implementation for running the FrontierScience benchmark using the dataset released by OpenAI on their [Hugging Face account](https://huggingface.co/datasets/openai/frontierscience).
+
+The dataset consists of 160 expert-level scientific problems organized into two difficulty tracks (Olympiad and Research) and spanning three subjects (Physics, Chemistry, and Biology):
 
 - **Olympiad Track**: 100 international olympiad-level problems (short answer format)
 - **Research Track**: 60 PhD-level research sub-problems (open-ended, rubric-graded)
