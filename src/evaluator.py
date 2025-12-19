@@ -50,7 +50,7 @@ class FrontierScienceEvaluator:
 
         self.judge_caller = ModelCaller(
             model=self.judge_model,
-            reasoning_effort='high' if 'o1' in self.judge_model or 'o3' in self.judge_model else None
+            reasoning_effort='high' if ('gpt-5' in self.judge_model.lower() or 'o1' in self.judge_model or 'o3' in self.judge_model) else None
         )
         
         # Load prompts

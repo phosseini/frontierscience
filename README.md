@@ -9,7 +9,7 @@ The dataset consists of 160 expert-level scientific problems organized into two 
 - **Olympiad Track**: 100 international olympiad-level problems (short answer format)
 - **Research Track**: 60 PhD-level research sub-problems (open-ended, rubric-graded)
 
-### Paper Specifications
+### Evaluation Specifications
 - **Olympiad**: 20 trials per problem, majority vote
 - **Research**: 30 trials per problem, average rubric score ≥7/10 = success
 - **Judge Model**: GPT-5 thinking at high reasoning effort
@@ -18,7 +18,7 @@ The dataset consists of 160 expert-level scientific problems organized into two 
 
 ```bash
 # Navigate to project directory
-cd frontierscience-benchmark
+cd frontierscience
 
 # Install dependencies
 pip install -r requirements.txt
@@ -47,7 +47,7 @@ Run a quick test (2 problems, 2 trials each):
 ```bash
 python run_evaluation.py \
     --track research \
-    --model gpt-4o \
+    --model gpt-5-mini-2025-08-07 \
     --limit 2 \
     --num_trials 2
 ```
@@ -56,7 +56,7 @@ Expected output:
 ```
 RESEARCH RESULTS
 ============================================================
-Model: gpt-4o
+Model: gpt-5-mini-2025-08-07
 Problems evaluated: 2
 Trials per problem: 2
 Success threshold: 7.0/10 points
@@ -89,7 +89,7 @@ Results are saved as JSON files in the output directory. Each file contains:
 ```bash
 python run_evaluation.py \
     --track olympiad \
-    --model gpt-4o \
+    --model gpt-5-mini-2025-08-07 \
     --subject physics \
     --num_trials 20
 ```
@@ -100,7 +100,7 @@ Available subjects: `physics`, `chemistry`, `biology`
 ```bash
 python run_evaluation.py \
     --track research \
-    --model gpt-4o \
+    --model gpt-5-mini-2025-08-07 \
     --limit 10 \
     --num_trials 5
 ```
@@ -109,7 +109,7 @@ python run_evaluation.py \
 ```bash
 python run_evaluation.py \
     --track olympiad \
-    --model gpt-4o \
+    --model gpt-5-mini-2025-08-07 \
     --output_dir results/my-experiment
 ```
 

@@ -56,15 +56,15 @@ def main():
     parser.add_argument(
         '--judge_model',
         type=str,
-        default='gpt-5.2-2025-12-11',
-        help='Model to use as judge for grading (default: gpt-4o)'
+        default='gpt-5-2025-08-07',
+        help='Model to use as judge for grading (default: gpt-5-2025-08-07)'
     )
     
     parser.add_argument(
         '--reasoning_effort',
         type=str,
         choices=['low', 'medium', 'high'],
-        help='Reasoning effort for o1/o3 models (low, medium, high)'
+        help='Reasoning effort (low, medium, high)'
     )
     
     parser.add_argument(
